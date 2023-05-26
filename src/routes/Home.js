@@ -1,9 +1,14 @@
 import React from "react";
-import { Typography } from "@mui/material";
 import Hero from "../components/home/Hero";
+import Galleries from "../components/home/Galleries";
 
 const Home = () => {
-  return <Hero />;
+  return (
+    <>
+      <Hero />
+      <Galleries />
+    </>
+  );
 };
 
 export default Home;

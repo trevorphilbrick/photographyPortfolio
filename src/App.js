@@ -4,7 +4,9 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import firebaseConfig from "./firebase/config";
 import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
-import { useState } from "react";
+import { useState, createContext, useEffect } from "react";
+import { getFirestore } from "firebase/firestore";
+import ToggleTheme from "./components/common/ToggleTheme";
 
 const darkTheme = createTheme({
   palette: {
@@ -20,18 +22,33 @@ const lightTheme = createTheme({
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+const db = getFirestore(app);
+
+const FirebaseDBContext = createContext();
+const AppStateContext = createContext();
+const SetThemeContext = createContext();
 
 function App() {
   const [themeMode, setThemeMode] = useState("dark");
+  const [appState, setAppState] = useState({});
+
   return (
-    <ThemeProvider theme={themeMode === "dark" ? darkTheme : lightTheme}>
-      <CssBaseline />
-      <div className="App">
-        <Outlet />
-      </div>
-    </ThemeProvider>
+    <SetThemeContext.Provider value={{ setThemeMode, themeMode }}>
+      <AppStateContext.Provider value={{ appState, setAppState }}>
+        <FirebaseDBContext.Provider value={db}>
+          <ThemeProvider theme={themeMode === "dark" ? darkTheme : lightTheme}>
+            <CssBaseline />
+            <div className="App">
+              <ToggleTheme />
+              <Outlet />
+            </div>
+          </ThemeProvider>
+        </FirebaseDBContext.Provider>
+      </AppStateContext.Provider>
+    </SetThemeContext.Provider>
   );
 }
+
+export { FirebaseDBContext, AppStateContext, SetThemeContext };
 
 export default App;

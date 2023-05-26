@@ -29,7 +29,9 @@ const Hero = () => {
           transition={{ duration: 1, delay: 1 }}
           initial={{ opacity: 0 }}
         >
-          <Typography variant="h1">Trevor Philbrick</Typography>
+          <Typography variant="h2" letterSpacing={"4px"}>
+            Trevor Philbrick
+          </Typography>
         </motion.div>
         <motion.div
           animate={{ width: "100%" }}
@@ -43,7 +45,9 @@ const Hero = () => {
           transition={{ duration: 1, delay: 1.5 }}
           initial={{ opacity: 0 }}
         >
-          <Typography variant="h2">Photography</Typography>
+          <Typography variant="h3" letterSpacing={"4px"} fontWeight={300}>
+            Photography
+          </Typography>
         </motion.div>
         <motion.div
           animate={{ opacity: 1, rotate: 720 }}

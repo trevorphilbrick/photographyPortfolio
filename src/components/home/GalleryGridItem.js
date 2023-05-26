@@ -1,15 +1,17 @@
 import { useState } from "react";
 import { Grid, Typography } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const GalleryGridItem = ({ gallery }) => {
   const [hover, setHover] = useState(false);
+  const navigate = useNavigate();
   return (
     <Grid
       item
       xs={12}
       md={6}
-      lg={4}
       sx={{ position: "relative", margin: 0, padding: 0 }}
+      onClick={() => navigate(`/gallery/${gallery.name}`)}
     >
       <img
         src={gallery.imageUrl}

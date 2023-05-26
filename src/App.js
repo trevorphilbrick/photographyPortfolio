@@ -1,10 +1,9 @@
 import { Outlet } from "react-router-dom";
 import "./App.css";
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 import firebaseConfig from "./firebase/config";
 import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
-import { useState, createContext, useEffect } from "react";
+import { useState, createContext } from "react";
 import { getFirestore } from "firebase/firestore";
 import ToggleTheme from "./components/common/ToggleTheme";
 

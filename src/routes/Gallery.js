@@ -1,11 +1,14 @@
 import { useEffect, useContext } from "react";
 import { FirebaseDBContext, AppStateContext } from "../App";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import fetchImageGallery from "../firebase/fetchImageGallery";
 import { Masonry } from "@mui/lab";
-import { Typography } from "@mui/material";
+import { Typography, Container, Box } from "@mui/material";
+import MasonryTile from "../components/gallery/MasonryTile";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 const Gallery = () => {
+  const navigate = useNavigate();
   const db = useContext(FirebaseDBContext);
   const { appState, setAppState } = useContext(AppStateContext);
   const { galleryId } = useParams();
@@ -21,20 +24,42 @@ const Gallery = () => {
     console.log(appState);
   }, []);
   return (
-    <>
-      <Typography
-        variant="h3"
-        sx={{ marginTop: 6, marginBottom: 6 }}
-        fontWeight={"light"}
+    <Container>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          position: "relative",
+        }}
       >
-        {galleryId.charAt(0).toUpperCase() + galleryId.slice(1) + " Gallery"}
-      </Typography>
-      <Masonry>
+        <div
+          style={{
+            position: "absolute",
+            left: 0,
+            display: "flex",
+            alignItems: "center",
+          }}
+          onClick={() => navigate("/")}
+        >
+          <ArrowBackIcon />
+        </div>
+        <Typography
+          variant="h3"
+          sx={{ marginTop: 6, marginBottom: 6 }}
+          fontWeight={"light"}
+          letterSpacing={"4px"}
+        >
+          {galleryId.charAt(0).toUpperCase() + galleryId.slice(1)}
+        </Typography>
+      </Box>
+
+      <Masonry columns={{ xs: 1, md: 3, lg: 4 }}>
         {appState?.images?.map((image) => (
-          <img src={image.imageUrl} key={image.id} />
+          <MasonryTile key={image.id} image={image} />
         ))}
       </Masonry>
-    </>
+    </Container>
   );
 };
 

@@ -17,6 +17,10 @@ const Gallery = () => {
     const fetchGallery = async () => {
       const images = await fetchImageGallery(db, galleryId);
       setAppState({ ...appState, images });
+
+      return () => {
+        setAppState({ ...appState, images: [] });
+      };
     };
 
     fetchGallery();

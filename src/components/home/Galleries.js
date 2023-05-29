@@ -1,7 +1,7 @@
 import { useEffect, useContext } from "react";
 import fetchGalleries from "../../firebase/fetchGalleries";
 import { FirebaseDBContext, AppStateContext } from "../../App";
-import { Container, Grid, Typography } from "@mui/material";
+import { Container, Grid, Typography, Divider } from "@mui/material";
 import GalleryGridItem from "./GalleryGridItem";
 
 const Galleries = () => {
@@ -10,9 +10,9 @@ const Galleries = () => {
 
   const handleFetchGalleries = async () => {
     const galleries = await fetchGalleries(db);
-    setAppState((prevState) => ({
+    setAppState(prevState => ({
       ...prevState,
-      galleries,
+      galleries
     }));
   };
   useEffect(() => {
@@ -21,11 +21,12 @@ const Galleries = () => {
   }, []);
   return (
     <Container sx={{ mt: 4 }}>
-      <Typography variant="h4" fontWeight={300} marginBottom={4}>
+      <Typography variant="h4" fontWeight={300} marginBottom={2}>
         Galleries
       </Typography>
+      <Divider sx={{ mb: 4 }} />
       <Grid container>
-        {appState?.galleries?.map((gallery) => (
+        {appState?.galleries?.map(gallery => (
           <GalleryGridItem key={gallery.id} gallery={gallery} />
         ))}
       </Grid>

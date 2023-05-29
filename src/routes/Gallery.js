@@ -58,7 +58,7 @@ const Gallery = () => {
         </Typography>
       </Box>
 
-      <Masonry columns={{ xs: 1, md: 3, lg: 4 }}>
+      <Masonry columns={{ xs: 1, md: 3 }}>
         {appState?.images?.map((image) => (
           <MasonryTile key={image.id} image={image} />
         ))}

@@ -3,7 +3,7 @@ import { FirebaseDBContext, AppStateContext } from "../App";
 import { useNavigate, useParams } from "react-router-dom";
 import fetchImageGallery from "../firebase/fetchImageGallery";
 import { Masonry } from "@mui/lab";
-import { Typography, Container, Box } from "@mui/material";
+import { Typography, Container, Box, useTheme } from "@mui/material";
 import MasonryTile from "../components/gallery/MasonryTile";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { ClipLoader } from "react-spinners";
@@ -14,6 +14,8 @@ const Gallery = () => {
   const { appState, setAppState } = useContext(AppStateContext);
   const { galleryId } = useParams();
   const [isLoading, setIsLoading] = useState(true);
+
+  const theme = useTheme();
 
   useEffect(() => {
     const fetchGallery = async () => {
@@ -31,7 +33,7 @@ const Gallery = () => {
     console.log(appState);
   }, []);
   return (
-    <Container>
+    <Container sx={{ minHeight: "100vh" }}>
       <Box
         sx={{
           display: "flex",
@@ -55,7 +57,7 @@ const Gallery = () => {
           {galleryId.charAt(0).toUpperCase() + galleryId.slice(1)}
         </Typography>
       </Box>
-      <ClipLoader loading={isLoading} />
+      <ClipLoader loading={isLoading} color={theme.palette.text.primary} />
       <Masonry columns={{ xs: 1, md: 3 }}>
         {appState?.images?.map(image => (
           <MasonryTile key={image.id} image={image} />

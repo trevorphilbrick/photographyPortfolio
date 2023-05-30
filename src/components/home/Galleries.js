@@ -10,13 +10,21 @@ const Galleries = () => {
   const { setAppState, appState } = useContext(AppStateContext);
   const [isLoading, setIsLoading] = useState(false);
 
+  const sortGalleries = galleries => {
+    return galleries.sort((a, b) => {
+      return a.order > b.order ? 1 : -1;
+    });
+  };
+
   const handleFetchGalleries = async () => {
     setIsLoading(true);
     const galleries = await fetchGalleries(db);
     setAppState(prevState => ({
       ...prevState,
-      galleries
+      galleries: sortGalleries(galleries)
     }));
+    console.log(appState.galleries);
+
     setIsLoading(false);
   };
   useEffect(() => {

@@ -7,6 +7,7 @@ import { useState, createContext } from "react";
 import { getFirestore } from "firebase/firestore";
 import ContactFab from "./components/common/ContactFab";
 import ToggleTheme from "./components/common/ToggleTheme";
+import Footer from "./components/common/Footer";
 
 const baseTheme = {
   typography: {
@@ -26,7 +27,7 @@ const darkTheme = createTheme({
   palette: {
     mode: "dark",
     primary: {
-      main: "#222222"
+      main: "#191919"
     }
   }
 });
@@ -36,7 +37,7 @@ const lightTheme = createTheme({
   palette: {
     mode: "light",
     primary: {
-      main: "#efefef"
+      main: "#fcfcfc"
     }
   }
 });
@@ -63,6 +64,7 @@ function App() {
               <ToggleTheme />
               <ContactFab />
               <Outlet />
+              <Footer />
             </div>
           </ThemeProvider>
         </FirebaseDBContext.Provider>

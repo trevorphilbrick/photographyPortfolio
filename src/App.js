@@ -8,7 +8,21 @@ import { getFirestore } from "firebase/firestore";
 import ContactFab from "./components/common/ContactFab";
 import ToggleTheme from "./components/common/ToggleTheme";
 
+const baseTheme = {
+  typography: {
+    h3: {
+      fontSize: "2.5rem",
+      fontWeight: 300,
+      letterSpacing: "4px",
+      "@media (max-width:600px)": {
+        fontSize: "2rem"
+      }
+    }
+  }
+};
+
 const darkTheme = createTheme({
+  ...baseTheme,
   palette: {
     mode: "dark",
     primary: {
@@ -18,6 +32,7 @@ const darkTheme = createTheme({
 });
 
 const lightTheme = createTheme({
+  ...baseTheme,
   palette: {
     mode: "light",
     primary: {

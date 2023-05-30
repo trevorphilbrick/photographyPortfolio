@@ -9,10 +9,9 @@ const ContactFab = () => {
   return (
     <Fab
       sx={{
-        position: "fixed",
-        bottom: "32px",
-        right: "32px",
         visibility: location.pathname === "/contact" ? "hidden" : "visible",
+        display: location.pathname === "/contact" ? "none" : "inline-flex",
+        ml: 3
       }}
       onClick={() => navigate("/contact")}
     >

@@ -34,7 +34,7 @@ const Footer = () => {
                 {appState.galleries &&
                   appState.galleries.map(gallery => (
                     <li key={gallery.id}>
-                      <Link to={`/gallery/${gallery.id}`} style={textPrimaryColor}>
+                      <Link to={`/gallery/${gallery.name}`} style={textPrimaryColor}>
                         {gallery.title}
                       </Link>
                     </li>

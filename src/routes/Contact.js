@@ -34,7 +34,7 @@ export const Contact = () => {
 
   return (
     <form ref={form} onSubmit={sendEmail}>
-      <Container maxWidth="md">
+      <Container maxWidth="md" sx={{ minHeight: "100vh" }}>
         <Box
           sx={{
             display: "flex",

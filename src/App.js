@@ -3,11 +3,11 @@ import "./App.css";
 import { initializeApp } from "firebase/app";
 import firebaseConfig from "./firebase/config";
 import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
-import { useState, createContext } from "react";
+import { useState, createContext, useEffect } from "react";
 import { getFirestore } from "firebase/firestore";
-import ContactFab from "./components/common/ContactFab";
 import ToggleTheme from "./components/common/ToggleTheme";
 import Footer from "./components/common/Footer";
+import FabContainer from "./components/common/FabContainer";
 
 const baseTheme = {
   typography: {
@@ -54,6 +54,10 @@ function App() {
   const [themeMode, setThemeMode] = useState(localStorage.getItem("theme") || "light");
   const [appState, setAppState] = useState({});
 
+  useEffect(() => {
+    console.log(appState);
+  }, [appState]);
+
   return (
     <SetThemeContext.Provider value={{ setThemeMode, themeMode }}>
       <AppStateContext.Provider value={{ appState, setAppState }}>
@@ -62,7 +66,7 @@ function App() {
             <CssBaseline />
             <div className="App">
               <ToggleTheme />
-              <ContactFab />
+              <FabContainer />
               <Outlet />
               <Footer />
             </div>

@@ -32,7 +32,7 @@ const Galleries = () => {
     console.log(appState);
   }, []);
   return (
-    <Container sx={{ mt: 4 }}>
+    <Container sx={{ mt: 4 }} id="galleries">
       <Typography variant="h4" fontWeight={300} marginBottom={2}>
         Galleries
       </Typography>

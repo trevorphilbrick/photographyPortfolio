@@ -1,15 +1,20 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useContext } from "react";
 import emailjs from "@emailjs/browser";
 import { TextField, Grid, Container, Button, Box, Typography } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useNavigate } from "react-router-dom";
+import { logEvent } from "firebase/analytics";
+import { FirebaseAnalyticsContext } from "../App";
 
 export const Contact = () => {
   const navigate = useNavigate();
   const form = useRef();
+  const { analytics } = useContext(FirebaseAnalyticsContext);
 
   const [canSubmit, setCanSubmit] = useState(false);
   const [formValues, setFormValues] = useState({ name: "", email: "", message: "" });
+
+  logEvent(analytics, "view_contact");
 
   useEffect(() => {
     if (formValues.name && formValues.email && formValues.message) {

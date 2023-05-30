@@ -6,6 +6,7 @@ import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
 import { useState, createContext } from "react";
 import { getFirestore } from "firebase/firestore";
 import ContactFab from "./components/common/ContactFab";
+import ToggleTheme from "./components/common/ToggleTheme";
 
 const darkTheme = createTheme({
   palette: {
@@ -44,6 +45,7 @@ function App() {
           <ThemeProvider theme={themeMode === "dark" ? darkTheme : lightTheme}>
             <CssBaseline />
             <div className="App">
+              <ToggleTheme />
               <ContactFab />
               <Outlet />
             </div>

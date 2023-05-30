@@ -1,4 +1,4 @@
-import { useEffect, useContext } from "react";
+import { useEffect, useContext, useState } from "react";
 import { FirebaseDBContext, AppStateContext } from "../App";
 import { useNavigate, useParams } from "react-router-dom";
 import fetchImageGallery from "../firebase/fetchImageGallery";
@@ -6,17 +6,20 @@ import { Masonry } from "@mui/lab";
 import { Typography, Container, Box } from "@mui/material";
 import MasonryTile from "../components/gallery/MasonryTile";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { ClipLoader } from "react-spinners";
 
 const Gallery = () => {
   const navigate = useNavigate();
   const db = useContext(FirebaseDBContext);
   const { appState, setAppState } = useContext(AppStateContext);
   const { galleryId } = useParams();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchGallery = async () => {
       const images = await fetchImageGallery(db, galleryId);
       setAppState({ ...appState, images });
+      setIsLoading(false);
 
       return () => {
         setAppState({ ...appState, images: [] });
@@ -34,7 +37,7 @@ const Gallery = () => {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          position: "relative",
+          position: "relative"
         }}
       >
         <div
@@ -42,24 +45,19 @@ const Gallery = () => {
             position: "absolute",
             left: 0,
             display: "flex",
-            alignItems: "center",
+            alignItems: "center"
           }}
           onClick={() => navigate("/")}
         >
           <ArrowBackIcon />
         </div>
-        <Typography
-          variant="h3"
-          sx={{ marginTop: 6, marginBottom: 6 }}
-          fontWeight={"light"}
-          letterSpacing={"4px"}
-        >
+        <Typography variant="h3" sx={{ marginTop: 6, marginBottom: 6 }} fontWeight={"light"} letterSpacing={"4px"}>
           {galleryId.charAt(0).toUpperCase() + galleryId.slice(1)}
         </Typography>
       </Box>
-
+      <ClipLoader loading={isLoading} />
       <Masonry columns={{ xs: 1, md: 3 }}>
-        {appState?.images?.map((image) => (
+        {appState?.images?.map(image => (
           <MasonryTile key={image.id} image={image} />
         ))}
       </Masonry>

@@ -10,8 +10,8 @@ const ToggleTheme = () => {
     localStorage.setItem("theme", themeMode === "dark" ? "light" : "dark");
   };
   return (
-    <div style={{ marginTop: "3px" }} onClick={() => setTheme()}>
-      {themeMode === "dark" ? <LightModeIcon color="primary" /> : <DarkModeIcon />}
+    <div style={{ position: "fixed", top: 32, right: 32, zIndex: 100 }} onClick={() => setTheme()}>
+      {themeMode === "dark" ? <LightModeIcon /> : <DarkModeIcon />}
     </div>
   );
 };

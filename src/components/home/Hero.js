@@ -9,9 +9,7 @@ const Hero = () => {
   return (
     <div
       style={{
-        backgroundImage: `url(${
-          theme.palette.mode === "dark" ? heroImageDark : heroImage
-        })`,
+        backgroundImage: `url(${theme.palette.mode === "dark" ? heroImageDark : heroImage})`,
         width: "100vw",
         height: "100vh",
         backgroundRepeat: "no-repeat",
@@ -20,15 +18,11 @@ const Hero = () => {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        position: "sticky",
+        position: "sticky"
       }}
     >
       <div style={{ color: "#fff" }}>
-        <motion.div
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1 }}
-          initial={{ opacity: 0 }}
-        >
+        <motion.div animate={{ opacity: 1 }} transition={{ duration: 1, delay: 1 }} initial={{ opacity: 0 }}>
           <Typography variant="h2" letterSpacing={"4px"}>
             Trevor Philbrick
           </Typography>
@@ -40,11 +34,7 @@ const Hero = () => {
         >
           <Divider sx={{ backgroundColor: "#fff" }} />
         </motion.div>
-        <motion.div
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.5 }}
-          initial={{ opacity: 0 }}
-        >
+        <motion.div animate={{ opacity: 1 }} transition={{ duration: 1, delay: 1.5 }} initial={{ opacity: 0 }}>
           <Typography variant="h3" letterSpacing={"4px"} fontWeight={300}>
             Photography
           </Typography>
@@ -60,7 +50,7 @@ const Hero = () => {
               height: "8px",
               backgroundColor: "#fff",
               transform: "rotate(45deg)",
-              margin: "16px auto",
+              margin: "16px auto"
             }}
           ></div>
         </motion.div>

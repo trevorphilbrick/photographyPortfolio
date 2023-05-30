@@ -33,7 +33,7 @@ const Gallery = () => {
     console.log(appState);
   }, []);
   return (
-    <Container sx={{ minHeight: "100vh" }}>
+    <Container>
       <Box
         sx={{
           display: "flex",

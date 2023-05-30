@@ -23,13 +23,11 @@ const Galleries = () => {
       ...prevState,
       galleries: sortGalleries(galleries)
     }));
-    console.log(appState.galleries);
 
     setIsLoading(false);
   };
   useEffect(() => {
     handleFetchGalleries();
-    console.log(appState);
   }, []);
   return (
     <Container sx={{ mt: 4 }} id="galleries">
@@ -40,7 +38,7 @@ const Galleries = () => {
       <ClipLoader loading={isLoading} />
       <Grid container>
         {appState?.galleries?.map(gallery => (
-          <GalleryGridItem key={gallery.id} gallery={gallery} />
+          <GalleryGridItem key={gallery.name} gallery={gallery} />
         ))}
       </Grid>
     </Container>

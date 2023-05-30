@@ -33,7 +33,7 @@ const Footer = () => {
               <ul style={{ listStyleType: "none", textAlign: "left" }}>
                 {appState.galleries &&
                   appState.galleries.map(gallery => (
-                    <li key={gallery.id}>
+                    <li key={gallery.name}>
                       <Link to={`/gallery/${gallery.name}`} style={textPrimaryColor}>
                         {gallery.title}
                       </Link>

@@ -65,7 +65,7 @@ const Gallery = () => {
           <ArrowBackIcon />
         </div>
         <Typography variant="h3" sx={{ marginTop: 6, marginBottom: 6 }} fontWeight={"light"} letterSpacing={"4px"}>
-          {galleryId.charAt(0).toUpperCase() + galleryId.slice(1)}
+          {galleryId === "realEstate" ? "Real Estate" : galleryId.charAt(0).toUpperCase() + galleryId.slice(1)}
         </Typography>
       </Box>
       <ClipLoader loading={isLoading} color={theme.palette.text.primary} />

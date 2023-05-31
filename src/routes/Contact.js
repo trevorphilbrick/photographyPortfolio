@@ -4,6 +4,7 @@ import { TextField, Grid, Container, Button, Box, Typography } from "@mui/materi
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useNavigate } from "react-router-dom";
 import { logEvent, getAnalytics } from "firebase/analytics";
+import { ClipLoader } from "react-spinners";
 
 export const Contact = () => {
   const navigate = useNavigate();
@@ -11,6 +12,8 @@ export const Contact = () => {
 
   const [canSubmit, setCanSubmit] = useState(false);
   const [formValues, setFormValues] = useState({ name: "", email: "", message: "" });
+  const [statusMessage, setStatusMessage] = useState("");
+  const [showButtonLoader, setShowButtonLoader] = useState(false);
 
   useEffect(() => {
     logEvent(getAnalytics(), "view_contact");
@@ -29,14 +32,22 @@ export const Contact = () => {
   }, [formValues]);
 
   const sendEmail = e => {
+    setCanSubmit(false);
+    setShowButtonLoader(true);
     e.preventDefault();
 
     emailjs.sendForm("service_ulvxxqh", "template_p94lkzt", form.current, "user_i22K5THHBwbelXktaZ1FL").then(
       result => {
         console.log(result.text);
+        setStatusMessage("Message sent successfully!");
+        setShowButtonLoader(false);
+        setCanSubmit(true);
       },
       error => {
         console.log(error.text);
+        setStatusMessage("Message failed to send.");
+        setShowButtonLoader(false);
+        setCanSubmit(true);
       }
     );
   };
@@ -113,8 +124,13 @@ export const Contact = () => {
           </Grid>
           <Grid item xs={12} sx={{ padding: 1 }}>
             <Button type="submit" value="Send" variant="contained" color="success" disabled={!canSubmit}>
-              Submit
+              {showButtonLoader ? <ClipLoader size={20} /> : "Submit"}
             </Button>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography variant="p" fontWeight={"light"} letterSpacing={"4px"} textAlign={"center"}>
+              {statusMessage}
+            </Typography>
           </Grid>
         </Grid>
       </Container>

@@ -17,6 +17,10 @@ export const Contact = () => {
   }, []);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     if (formValues.name && formValues.email && formValues.message) {
       setCanSubmit(true);
     } else {

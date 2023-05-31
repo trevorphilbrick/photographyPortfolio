@@ -19,6 +19,10 @@ const Gallery = () => {
   const theme = useTheme();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [appState.images]);
+
+  useEffect(() => {
     logEvent(getAnalytics(), "view_gallery", {
       gallery_id: galleryId
     });

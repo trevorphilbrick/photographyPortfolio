@@ -7,20 +7,15 @@ import { Typography, Container, Box, useTheme } from "@mui/material";
 import MasonryTile from "../components/gallery/MasonryTile";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { ClipLoader } from "react-spinners";
-import { logEvent } from "firebase/analytics";
-import { FirebaseAnalyticsContext } from "../App";
 
 const Gallery = () => {
   const navigate = useNavigate();
   const db = useContext(FirebaseDBContext);
   const { appState, setAppState } = useContext(AppStateContext);
-  const { analytics } = useContext(FirebaseAnalyticsContext);
   const { galleryId } = useParams();
   const [isLoading, setIsLoading] = useState(true);
 
   const theme = useTheme();
-
-  logEvent(analytics, "view_gallery", { galleryId });
 
   useEffect(() => {
     const fetchGallery = async () => {

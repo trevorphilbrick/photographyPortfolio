@@ -8,6 +8,7 @@ const ContactFab = () => {
 
   return (
     <Fab
+      aria-label="contact"
       sx={{
         visibility: location.pathname === "/contact" ? "hidden" : "visible",
         display: location.pathname === "/contact" ? "none" : "inline-flex",

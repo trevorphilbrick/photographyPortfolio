@@ -17,7 +17,7 @@ const Footer = () => {
         pt: 4,
         pb: 4,
         fontSize: "0.9rem",
-        backgroundColor: theme.palette.primary.main
+        backgroundColor: theme.palette.mode === "dark" ? theme.palette.grey[900] : theme.palette.grey[100]
       }}
     >
       <Container>

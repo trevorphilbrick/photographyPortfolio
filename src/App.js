@@ -28,7 +28,7 @@ const darkTheme = createTheme({
   palette: {
     mode: "dark",
     primary: {
-      main: "#191919"
+      main: "#fcfcfc"
     }
   }
 });
@@ -38,7 +38,7 @@ const lightTheme = createTheme({
   palette: {
     mode: "light",
     primary: {
-      main: "#fcfcfc"
+      main: "#191919"
     }
   }
 });

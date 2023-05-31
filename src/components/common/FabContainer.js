@@ -1,14 +1,19 @@
 import React from "react";
 import NavFab from "./NavFab";
 import ContactFab from "./ContactFab";
-import { Box } from "@mui/material";
+import { motion } from "framer-motion";
 
 const FabContainer = () => {
   return (
-    <Box sx={{ position: "fixed", bottom: 32, right: 32, zIndex: 200 }}>
+    <motion.div
+      animate={{ x: 0, opacity: 1 }}
+      initial={{ x: 200, opacity: 0 }}
+      transition={{ duration: 0.5, delay: 3 }}
+      style={{ position: "fixed", bottom: 32, right: 32, zIndex: 200 }}
+    >
       <NavFab />
       <ContactFab />
-    </Box>
+    </motion.div>
   );
 };
 

@@ -66,7 +66,7 @@ const About = () => {
           <Divider sx={{ mb: 2 }} />
           <Typography variant="body1" fontWeight={300} marginBottom={2}>
             <a
-              href="https://www.instagram.com/trevor.philbrick"
+              href="https://www.instagram.com/trevorphilbrick.photo/"
               style={{ color: theme.palette.text.primary }}
               target="_blank"
               rel="noopener noreferrer"

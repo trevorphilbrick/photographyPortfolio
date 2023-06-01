@@ -65,7 +65,7 @@ const Footer = () => {
           </Grid>
           <Grid item xs={12} sm={4}>
             <Box sx={{ width: "100%", display: "flex", justifyContent: "space-around", px: 8, maxWidth: 300 }}>
-              <InstagramIcon onClick={() => (window.location = "https://www.instagram.com/trevor.philbrick")} />
+              <InstagramIcon onClick={() => (window.location = "https://www.instagram.com/trevorphilbrick.photo/")} />
               <GitHubIcon onClick={() => (window.location = "https://github.com/trevorphilbrick")} />
               <LinkedInIcon onClick={() => (window.location = "https://www.linkedin.com/in/trevor-philbrick/")} />
             </Box>
